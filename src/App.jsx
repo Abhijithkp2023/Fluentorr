@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <div className=''>
+      <div>
         <Header/>
         <Outlet/>
         <Footer/>
