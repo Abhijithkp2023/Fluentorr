@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdMenu } from "react-icons/md";
 import { MdOutlineClose } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,8 +10,27 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const onCloseMenu = () => {
+    setMenuOpen(false)
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header role="banner" className="md:fixed w-full shadow-md z-50">
+    <header role="banner" className="w-full shadow-md z-20 ">
     <nav role="navigation" className="bg-blue-100 flex justify-between items-center px-4 py-7">
       <div>
         <img className="w-16" src="/fluentorr.svg" alt="Fluentorr logo" />
@@ -18,39 +38,39 @@ const Header = () => {
       <div
         className={`md:static absolute z-50 bg-blue-100 md:min-h-fit min-h-[20vh] right-0 ${
           menuOpen ? "top-[8%]" : "top-[-100%]"
-        } md:w-auto w-full flex justify-center md:pb-0 pb-5`}
+        } md:w-auto w-full flex justify-center mt-6 md:pb-0 pb-5`}
       >
         <ul className="flex md:flex-row flex-col md:items-center items-center md:gap-[4vw] gap-8 justify-center">
           <li className="font-">
-            <a className="hover:text-gray-700 hover:underline" href="/" aria-label="Home">
+            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/" aria-label="Home">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="text-base hover:text-gray-700 hover:underline" href="/about" aria-label="About">
+            <Link className="text-base hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/about" aria-label="About">
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="hover:text-gray-700 hover:underline" href="/courses" aria-label="Contact us">
+            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/courses" aria-label="Contact us">
               Courses
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="hover:text-gray-700 hover:underline" href="/blogs" aria-label="Contact us">
+            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/blogs" aria-label="Contact us">
               Blogs
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="hover:text-gray-700 hover:underline" href="/contact" aria-label="Contact us">
+            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/epttest" aria-label="Ept test page">
               EPT Test
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
       <div className="flex items-center gap-6">
         <button aria-label="Get started" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Get Started
+          Enquire Now
         </button>
         {menuOpen === false ? (
           <MdMenu
