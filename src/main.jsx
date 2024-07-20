@@ -4,11 +4,12 @@ import AboutPage from './pages/AboutPage'
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-
+import "@fontsource/poppins"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CoursePage from "./pages/CoursePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
+import EptControlPge from "./pages/EptControlPge.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -30,6 +31,9 @@ const appRouter = createBrowserRouter([
       },{
         path: "/blogs",
         element: <BlogPage />,
+      },{
+        path:"/epttest",
+        element:<EptControlPge />
       }
       
     ],
