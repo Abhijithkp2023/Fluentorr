@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white p-10">
+    <footer className="bg-blue-100 text-black p-10">
     <div className="container mx-auto">
       <div className="flex flex-wrap pb-5 ">
         <div className="w-full md:w-1/3 mb-8 md:mb-0 ">
@@ -75,8 +75,8 @@ const Footer = () => {
       <div className="flex flex-col items-center">
         <div className="mb-4">
           <img
-            className="h-16"
-            src="/fluentorr.svg"
+            className="w-36 md:w-44 lg:w-56 h-auto"
+            src="/flu.png"
             alt="Fluentorr logo"
           />
         </div>

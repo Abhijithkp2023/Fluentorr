@@ -27,7 +27,7 @@ const FAQItem = ({ faq, isOpen, onClick }) => {
             isOpen ? "rotate-180" : ""
           }`}
         />
-        <h4 className="ml-5 flex-1 text-left md:text-lg text-base">{faq.question}</h4>
+        <h4 className="ml-5 flex-1 text-left md:text-lg text-fontColor text-base">{faq.question}</h4>
         <IoIosArrowForward
           className={`text-xl transition-transform transform ${
             isOpen ? "rotate-90" : ""
@@ -37,7 +37,7 @@ const FAQItem = ({ faq, isOpen, onClick }) => {
       <div className="overflow-hidden transition-all duration-500 ease-in-out"
         style={{ height: `${height}px`, opacity: isOpen ? 1 : 0 }}
         ref={contentRef}>
-      {isOpen && <p className="mt-3 text-gray-700">{faq.answer}</p>}
+      {isOpen && <p className="mt-3 text-gray-700 text-fontColor">{faq.answer}</p>}
       </div>
       
     </div>

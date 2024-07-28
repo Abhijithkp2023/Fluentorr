@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import FAQItem from "../Components/FaqItem";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
-import { FcBiotech } from "react-icons/fc";
-import { FcBullish } from "react-icons/fc";
-import { FcCalendar } from "react-icons/fc";
-import { FcCollaboration } from "react-icons/fc";
 import WhatsappAndPhone from "../Components/WhatsappAndPhone";
-import ReviewCarousel from "../Components/ReviewCarousel";
+import Activities from "../Components/Activities";
+import { FcGlobe, FcCalendar, FcConferenceCall } from 'react-icons/fc';
 
 const HomePage = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -23,30 +20,48 @@ const HomePage = () => {
         "Fluentorr is divided into three levels: Basic, L1 (Intermediate), and L2 (Advanced). Each level has tailored lessons and activities to suit the proficiency of the students. Our structure includes worksheets, Google Meet sessions for interactive games and activities, and one-on-one calling sessions for personalized feedback and support.",
     },
     {
-      question: "How does Fluentorr's teaching method differ from traditional methods?",
-      answer: "Fluentorr uses the Communicative Language Training (CLT) method, focusing on real-life communication and practical usage rather than rote learning. We integrate games, activities, and interactive sessions to make learning engaging and effective.",
-    },{
-      question:" How does the subscription model work?",
-      answer:" Unlike traditional fixed-duration courses, Fluentorr offers a flexible subscription model. Students can subscribe monthly and continue as long as they need, allowing them to learn at their own pace without the pressure of a fixed timeframe."
-    },{
-      question:"What support do students receive from mentors?",
-      answer:"Our mentors provide personalized feedback, track progress, and offer support through one-on-one calling sessions. This ensures that each student receives the attention and guidance they need to improve."
-    },{
-      question:"How are the worksheets structured?",
-      answer:"The worksheets include essential tasks such as daily diaries, new word exercises, daily paragraphs, and grammar tasks. Additional tasks include object descriptions, movie reviews, translation exercises, and more, all aimed at enhancing different aspects of English proficiency."
-    },{
-        question:" What personal development skills can students expect to gain?",
-        answer:"n addition to language skills, students will develop confidence, public speaking abilities, listening and analytical skills, and other personal development skills through targeted exercises and interactive activities."
-      },{
-        question:"How do the Google Meet sessions work?",
-        answer:"Google Meet sessions are held regularly and include at least three activities and a game. These sessions are designed to be interactive and fun, allowing students to practice speaking and listening in a supportive environment with peers."
-      },{
-        question:"What if a student has difficulty using the website for the EPT test?",
-        answer:"If a student has difficulty using the website, they can connect with our counselors. The counselors will provide the EPT test questions through WhatsApp, and the student can respond through WhatsApp as well. The counselors will then upload the answers to the EPT platform and send the results to the student."
-      },{
-        question:"How does Fluentorr track student progress?",
-        answer:"We use regular assessments and leaderboards to track student progress. Detailed reports and feedback are provided to help students understand their strengths and areas for improvement, ensuring continuous development."
-      },
+      question:
+        "How does Fluentorr's teaching method differ from traditional methods?",
+      answer:
+        "Fluentorr uses the Communicative Language Training (CLT) method, focusing on real-life communication and practical usage rather than rote learning. We integrate games, activities, and interactive sessions to make learning engaging and effective.",
+    },
+    {
+      question: " How does the subscription model work?",
+      answer:
+        " Unlike traditional fixed-duration courses, Fluentorr offers a flexible subscription model. Students can subscribe monthly and continue as long as they need, allowing them to learn at their own pace without the pressure of a fixed timeframe.",
+    },
+    {
+      question: "What support do students receive from mentors?",
+      answer:
+        "Our mentors provide personalized feedback, track progress, and offer support through one-on-one calling sessions. This ensures that each student receives the attention and guidance they need to improve.",
+    },
+    {
+      question: "How are the worksheets structured?",
+      answer:
+        "The worksheets include essential tasks such as daily diaries, new word exercises, daily paragraphs, and grammar tasks. Additional tasks include object descriptions, movie reviews, translation exercises, and more, all aimed at enhancing different aspects of English proficiency.",
+    },
+    {
+      question:
+        " What personal development skills can students expect to gain?",
+      answer:
+        "In addition to language skills, students will develop confidence, public speaking abilities, listening and analytical skills, and other personal development skills through targeted exercises and interactive activities.",
+    },
+    {
+      question: "How do the Google Meet sessions work?",
+      answer:
+        "Google Meet sessions are held regularly and include at least three activities and a game. These sessions are designed to be interactive and fun, allowing students to practice speaking and listening in a supportive environment with peers.",
+    },
+    {
+      question:
+        "What if a student has difficulty using the website for the EPT test?",
+      answer:
+        "If a student has difficulty using the website, they can connect with our counselors. The counselors will provide the EPT test questions through WhatsApp, and the student can respond through WhatsApp as well. The counselors will then upload the answers to the EPT platform and send the results to the student.",
+    },
+    {
+      question: "How does Fluentorr track student progress?",
+      answer:
+        "We use regular assessments and leaderboards to track student progress. Detailed reports and feedback are provided to help students understand their strengths and areas for improvement, ensuring continuous development.",
+    },
   ];
 
   const items = [
@@ -78,19 +93,20 @@ const HomePage = () => {
 
   return (
     <div className="w-full ">
-      <section className="bg-yellow-50 p-4 md:px-[100px] md:py-10 md:pt-20 w-full flex justify-center items-center">
+      <section className="bg-blue-50 md:px-[100px] md:py-20 md:pt-20 w-full flex justify-center items-center">
         <div className="w-full flex md:p-0 p-4 flex-col-reverse md:flex-row space-y-6 md:space-y-0 md:space-x-6">
           <div className="md:w-1/2 text-left p-[10px]">
             <div className="flex flex-col">
-              <h1 className="md:text-5xl text-2xl md:leading-snug leading-normal font-bold mb-4">
-                <span className="text-blue-950">Fluentorr :</span> Fluency,
+              <h1 className="md:text-5xl text-2xl md:leading-snug leading-normal text-fontColor text-ob font-black mb-4">
+                <span className="text-gradient-blue ">Fluentorr :</span> Fluency,
                 Confidence, Growth.
               </h1>
-              <p className="md:text-lg text-[15px] mb-6">
+              <p className="md:text-lg text-[15px] mb-6 text-ob text-fontColor">
                 Join Fluentorr and Unlock Your English Potential.
               </p>
-              <p className="md:text-lg text-[15px] mb-6">
-              Fluentorr is a cutting-edge platform that makes learning English interactive, enjoyable, and highly effective."
+              <p className="md:text-lg text-[15px] text-fontColor mb-6">
+                Fluentorr is a cutting-edge platform that makes learning English
+                interactive, enjoyable, and highly effective."
               </p>
               <button
                 aria-label="Get started"
@@ -123,13 +139,12 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
       <section className="features md:px-[100px] md:py-10 ">
         <div className="md:p-0 p-[10px]">
-          <h3 className="px-5 py-7 md:text-[42px] text-[32px]">
-            Why <span className="text-blue-800 font-bold">Fluentorr</span>
+          <h3 className="px-5 py-7 md:text-[42px] text-[32px] text-fontColor font-black">
+            <span className="text-gradient-blue">Why</span> Fluentorr
           </h3>
-          <p className="px-5 pb-6 md:text-lg text-[15px]">
+          <p className="px-5 pb-6 md:text-lg text-[15px] leading-relaxed text-fontColor">
             Experience the best in English learning with Fluentorr’s
             Communicative Language Training (CLT). Our subscription model
             features engaging games and activities, live sessions, one-on-one
@@ -138,72 +153,79 @@ const HomePage = () => {
           </p>
           <div className="flex flex-col w-full">
             <div className="flex flex-col md:flex-row w-full">
-              <button className="text-left flex bg-blue-200 shadow-blue-300 shadow-md items-center  m-2 p-6 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-95 hover:bg-blue-300">
+              <button className="text-left flex bg-white border-2 border-gray-200 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
                 <div className="flex justify-center items-center mr-4">
-                  <FcBiotech className="md:size-12 size-8" />
+                  <FcGlobe className="md:size-12 size-8" />
                 </div>
                 <div>
-                  <h2 className="md:text-[22px] text-xl font-semibold mb-2">
-                  Communicative Language Training (CLT)
+                  <h2 className="md:text-[22px] text-xl font-semibold mb-2 text-fontColor">
+                    Communicative Language Training (CLT)
                   </h2>
-                  <p className="text-sm md:text-[15px] ">
-                  Learn English through real-life scenarios and practical usage.
+                  <p className="text-sm md:text-[15px] text-fontColor ">
+                    Learn English through real-life scenarios and practical
+                    usage.
                   </p>
                 </div>
               </button>
-              <button className="text-left flex items-center bg-yellow-100 shadow-md shadow-yellow-200 m-2 p-6 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-95 hover:bg-yellow-200">
+              <button className="text-left flex bg-white border-2 border-gray-200 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
                 <div className="flex justify-center items-center mr-4">
-                  <FcBullish className="md:size-12 size-8" />
+                  <FcGlobe className="md:size-12 size-8" />
                 </div>
                 <div>
-                  <h2 className="md:text-[22px] text-xl font-semibold mb-2">
-                  Engaging Games and Activities
+                  <h2 className="md:text-[22px] text-xl font-semibold mb-2 text-fontColor">
+                    Engaging Games and Activities
                   </h2>
-                  <p className="text-sm md:text-[15px]">
-                  Enhance your skills with fun and interactive exercises.
+                  <p className="text-sm md:text-[15px] text-fontColor">
+                    Enhance your skills with fun and interactive exercises.
                   </p>
                 </div>
               </button>
             </div>
             <div className="flex flex-col md:flex-row w-full">
-              <button className="text-left flex items-center bg-yellow-100 shadow-md shadow-yellow-200  m-2 p-6 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-95 hover:bg-yellow-200">
+              <button className="text-left flex bg-white border-2 border-gray-200 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
                 <div className="flex justify-center items-center mr-4">
                   <FcCalendar className="md:size-12 size-8" />
                 </div>
                 <div>
-                  <h2 className="md:text-[22px] text-lg font-semibold mb-2">
-                  Flexible Subscription Model
+                  <h2 className="md:text-[22px] text-lg text-fontColor font-semibold mb-2">
+                    Flexible Subscription Model
                   </h2>
-                  <p className="text-sm md:text-[15px]">
-                  Enjoy learning without the constraints of fixed-duration courses.
+                  <p className="text-sm md:text-[15px] text-fontColor">
+                    Enjoy learning without the constraints of fixed-duration
+                    courses.
                   </p>
                 </div>
               </button>
-              <button className="text-left flex bg-blue-200 shadow-blue-300 shadow-md items-center -200 m-2 p-6 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-95 hover:bg-blue-200">
+              <button className="text-left flex bg-white border-2 border-gray-200 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
                 <div className="flex justify-center items-center mr-4">
-                  <FcCollaboration className="md:size-12 size-8" />
+                  <FcConferenceCall className="md:size-12 size-8" />
                 </div>
                 <div>
-                  <h2 className="md:text-[22px] text-lg font-semibold mb-2">
-                  Confidence Building and Personal Development
+                  <h2 className="md:text-[22px] text-lg text-fontColor font-semibold mb-2">
+                    Confidence Building and Personal
                   </h2>
-                  <p className="text-sm md:text-[15px]">
-                  Improve public speaking, listening, and analytical skills.
+                  <p className="text-sm md:text-[15px] text-fontColor">
+                    Improve public speaking, listening, and analytical skills.
                   </p>
                 </div>
               </button>
             </div>
           </div>
         </div>
+        <div>
+          <Activities />
+        </div>
       </section>
 
-      <section className="w-full md:px-[100px] md:py-10 bg-white py-16 px-5">
+      <section className="w-full md:px-[100px] md:py-10 bg-blue-50 py-16 px-5">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-[42px]  font-bold text-center mb-8">
-          What You'll Gain with Fluentorr
+          <h2 className="text-3xl md:text-[42px] text-fontColor font-bold text-center mb-8">
+            What You'll <span className="text-gradient-blue">Gain</span> with
+            Fluentorr
           </h2>
-          <p className="md:text-lg text-[15px] text-center mb-12">
-            Our comprehensive sessions cover everything you need to English communication
+          <p className="md:text-lg text-[15px] text-center text-fontColor mb-12">
+            Our comprehensive sessions cover everything you need to English
+            communication
           </p>
           <div className="flex flex-col-reverse md:flex-row md:space-x-8">
             <div className="md:w-1/2 flex flex-col space-y-6">
@@ -214,10 +236,10 @@ const HomePage = () => {
                 >
                   <IoIosCheckmarkCircleOutline className="text-3xl text-blue-500" />
                   <div>
-                    <h3 className="md:text-[22px] text-lg font-semibold">
+                    <h3 className="text-fontColor md:text-[22px] text-lg font-semibold">
                       {item.title}
                     </h3>
-                    <p className="text-gray-700 md:text-[15px] text-[13px]">
+                    <p className="text-fontColor md:text-[15px] text-[13px]">
                       {item.description}
                     </p>
                   </div>
@@ -238,8 +260,9 @@ const HomePage = () => {
       <section className="faq md:px-[100px] px-[30px] py-[10px] md:py-10 w-full">
         <div className="w-full md:p-0 p-[10px]">
           <div className="w-full md:text-center text-left">
-            <h2 className="md:text-[42px] text-[32px] font-semibold w-full mb-6">
-              Frequently asked questions about Fluentorr's Communicative Langugage Training(CLT)
+            <h2 className="md:text-[42px] text-[32px] font-semibold w-full mb-6 text-fontColor">
+              <span className="text-gradient-blue">Frequently asked questions</span>{" "}
+              about Fluentorr's Communicative Langugage Training(CLT)
             </h2>
           </div>
           <div className="md:p-10">
