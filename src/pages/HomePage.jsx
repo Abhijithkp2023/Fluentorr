@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import FAQItem from "../Components/FaqItem";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
 import WhatsappAndPhone from "../Components/WhatsappAndPhone";
 import Activities from "../Components/Activities";
-import { FcGlobe, FcCalendar, FcConferenceCall } from 'react-icons/fc';
+import { FcCalendar, FcConferenceCall, FcVoicePresentation, FcIdea } from 'react-icons/fc';
+import EptTest from "../Components/EptTest";
+import { MdAssessment } from "react-icons/md";
 
 const HomePage = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -92,13 +95,17 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="w-full ">
-      <section className="bg-blue-50 md:px-[100px] md:py-20 md:pt-20 w-full flex justify-center items-center">
+    <main className="w-full overflow-hidden">
+      <Helmet>
+        <title>Fluentorr - Top CML training</title>
+        <meta name="description" content="Join Fluentorr and Unlock Your English Potential with interactive and effective learning methods." />
+      </Helmet>
+      <header className="bg-blue-50 md:px-[100px] md:py-20 md:pt-20 w-full flex justify-center items-center">
         <div className="w-full flex md:p-0 p-4 flex-col-reverse md:flex-row space-y-6 md:space-y-0 md:space-x-6">
           <div className="md:w-1/2 text-left p-[10px]">
             <div className="flex flex-col">
-              <h1 className="md:text-5xl text-2xl md:leading-snug leading-normal text-fontColor text-ob font-black mb-4">
-                <span className="text-gradient-blue ">Fluentorr :</span> Fluency,
+              <h1 className="md:text-5xl text-3xl md:leading-snug leading-normal text-fontColor text-ob mb-4">
+                <span className="text-gradient-blue font-black">Fluentorr :</span> Fluency,
                 Confidence, Growth.
               </h1>
               <p className="md:text-lg text-[15px] mb-6 text-ob text-fontColor">
@@ -108,17 +115,30 @@ const HomePage = () => {
                 Fluentorr is a cutting-edge platform that makes learning English
                 interactive, enjoyable, and highly effective."
               </p>
+              <div className="flex flex-row">
               <button
-                aria-label="Get started"
+                aria-label="Enquiry whatsapp"
                 className="bg-green-500 hover:scale-105 active:95 flex justify-center items-center text-white w-1/2 font-bold py-2 px-4 rounded"
               >
                 <div className="flex flex-row">
                   <div className="flex justify-center items-center">
                     <FaWhatsapp className="md:size-6 size-5 " />
                   </div>
-                  <p className="px-1 md:text-lg text-base">Whatsapp Now</p>
+                  <p className="px-1 md:text-base text-sm">Whatsapp Now</p>
                 </div>
               </button>
+              <button
+                aria-label="test page"
+                className="bg-blue-500 md:hidden mx-[10%] hover:scale-105 active:95 flex justify-center items-center text-white w-1/2 font-bold py-2 rounded"
+              >
+                <div className="flex flex-row">
+                  <div className="flex justify-center items-center">
+                  <MdAssessment className="mx-2" />
+                  </div>
+                  <p className="px-1 md:text-base text-sm">EPT Test</p>
+                </div>
+              </button>
+              </div>
             </div>
           </div>
           <div className="md:w-1/2 flex justify-center items-center md:p-0 p-[10px]">
@@ -138,11 +158,11 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </header>
       <section className="features md:px-[100px] md:py-10 ">
         <div className="md:p-0 p-[10px]">
-          <h3 className="px-5 py-7 md:text-[42px] text-[32px] text-fontColor font-black">
-            <span className="text-gradient-blue">Why</span> Fluentorr
+          <h3 className="px-5 py-7 md:text-[42px] text-3xl text-fontColor font-semibold">
+            <span className="text-gradient-blue font-black">Why</span> Fluentorr
           </h3>
           <p className="px-5 pb-6 md:text-lg text-[15px] leading-relaxed text-fontColor">
             Experience the best in English learning with Fluentorr’s
@@ -153,9 +173,9 @@ const HomePage = () => {
           </p>
           <div className="flex flex-col w-full">
             <div className="flex flex-col md:flex-row w-full">
-              <button className="text-left flex bg-white border-2 border-gray-200 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
+              <button className="text-left flex bg-white border-2 border-blue-100 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
                 <div className="flex justify-center items-center mr-4">
-                  <FcGlobe className="md:size-12 size-8" />
+                  <FcVoicePresentation className="md:size-12 size-8" />
                 </div>
                 <div>
                   <h2 className="md:text-[22px] text-xl font-semibold mb-2 text-fontColor">
@@ -167,9 +187,9 @@ const HomePage = () => {
                   </p>
                 </div>
               </button>
-              <button className="text-left flex bg-white border-2 border-gray-200 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
+              <button className="text-left flex bg-white border-2 border-blue-100 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
                 <div className="flex justify-center items-center mr-4">
-                  <FcGlobe className="md:size-12 size-8" />
+                  <FcIdea className="md:size-12 size-8" />
                 </div>
                 <div>
                   <h2 className="md:text-[22px] text-xl font-semibold mb-2 text-fontColor">
@@ -182,7 +202,7 @@ const HomePage = () => {
               </button>
             </div>
             <div className="flex flex-col md:flex-row w-full">
-              <button className="text-left flex bg-white border-2 border-gray-200 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
+              <button className="text-left flex bg-white border-2 border-blue-100 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
                 <div className="flex justify-center items-center mr-4">
                   <FcCalendar className="md:size-12 size-8" />
                 </div>
@@ -196,7 +216,7 @@ const HomePage = () => {
                   </p>
                 </div>
               </button>
-              <button className="text-left flex bg-white border-2 border-gray-200 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
+              <button className="text-left flex bg-white border-2 border-blue-100 shadow-gray-300 hover:bg-gray-50 shadow-md items-center  m-2 p-8 md:w-1/2 rounded-lg transform transition-transform duration-300 hover:scale-105">
                 <div className="flex justify-center items-center mr-4">
                   <FcConferenceCall className="md:size-12 size-8" />
                 </div>
@@ -219,8 +239,8 @@ const HomePage = () => {
 
       <section className="w-full md:px-[100px] md:py-10 bg-blue-50 py-16 px-5">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-[42px] text-fontColor font-bold text-center mb-8">
-            What You'll <span className="text-gradient-blue">Gain</span> with
+          <h2 className="text-3xl md:text-[42px] text-fontColor font-semibold text-center mb-8">
+            What You'll <span className="text-gradient-blue font-black">Gain</span> with
             Fluentorr
           </h2>
           <p className="md:text-lg text-[15px] text-center text-fontColor mb-12">
@@ -232,7 +252,7 @@ const HomePage = () => {
               {items.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-start space-x-4 bg-gray-50 p-4 rounded-lg shadow-sm"
+                  className="flex items-start space-x-4 bg-blue-100 p-4 rounded-lg shadow-sm"
                 >
                   <IoIosCheckmarkCircleOutline className="text-3xl text-blue-500" />
                   <div>
@@ -257,11 +277,15 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="faq md:px-[100px] px-[30px] py-[10px] md:py-10 w-full">
+      <section>
+        <EptTest />
+      </section>
+
+      <section className=" bg-blue-50 faq md:px-[100px] px-[30px] py-[10px] md:py-10 w-full">
         <div className="w-full md:p-0 p-[10px]">
           <div className="w-full md:text-center text-left">
             <h2 className="md:text-[42px] text-[32px] font-semibold w-full mb-6 text-fontColor">
-              <span className="text-gradient-blue">Frequently asked questions</span>{" "}
+              <span className="text-gradient-blue font-extrabold">Frequently asked questions</span>{" "}
               about Fluentorr's Communicative Langugage Training(CLT)
             </h2>
           </div>
@@ -280,7 +304,7 @@ const HomePage = () => {
       <section>
         <WhatsappAndPhone />
       </section>
-    </div>
+    </main>
   );
 };
 

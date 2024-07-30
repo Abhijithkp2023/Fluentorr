@@ -2,25 +2,25 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-100 text-black p-10">
+    <footer className="bg-white text-fontColor p-10 border-t-2 border-blue-100">
     <div className="container mx-auto">
       <div className="flex flex-wrap pb-5 ">
         <div className="w-full md:w-1/3 mb-8 md:mb-0 ">
-          <h4 className="font-extrabold text-xl pb-5 ">Links</h4>
+          <h4 className="font-bold text-xl pb-5 ">Links</h4>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:underline">Home</a></li>
-            <li><a href="#" className="hover:underline">About</a></li>
-            <li><a href="#" className="hover:underline">Gallery</a></li>
-            <li><a href="#" className="hover:underline">Career</a></li>
+            <li><a href="#" className="hover:text-gradient-blue">Home</a></li>
+            <li><a href="#" className="hover:text-gradient-blue">About</a></li>
+            <li><a href="#" className="hover:text-gradient-blue">Gallery</a></li>
+            <li><a href="#" className="hover:text-gradient-blue">Career</a></li>
           </ul>
         </div>
         <div className="w-full md:w-1/3 mb-8 md:mb-0">
           <h4 className="font-bold text-xl pb-5">Courses</h4>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:underline">Communicative Language Training</a></li>
-            <li><a href="#" className="hover:underline">IELTS</a></li>
-            <li><a href="#" className="hover:underline">Interview Training</a></li>
-            <li><a href="#" className="hover:underline">Junior</a></li>
+            <li><a href="#" className="hover:text-gradient-blue">Communicative Language Training</a></li>
+            <li><a href="#" className="hover:text-gradient-blue">IELTS</a></li>
+            <li><a href="#" className="hover:text-gradient-blue">Interview Training</a></li>
+            <li><a href="#" className="hover:text-gradient-blue">Junior</a></li>
           </ul>
         </div>
         <div className="w-full md:w-1/3">

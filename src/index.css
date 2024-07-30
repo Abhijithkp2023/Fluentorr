@@ -1,6 +1,11 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 @import "@fontsource/kumbh-sans"; 
+@import "@fontsource/kumbh-sans/400.css"; 
+@import "@fontsource/kumbh-sans/600.css"; 
+@import "@fontsource/kumbh-sans/700.css"; 
+@import "@fontsource/kumbh-sans/900.css"; 
+
 
 @tailwind base;
 @tailwind components;
@@ -11,6 +16,10 @@
     body {
       @apply font-sans;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   @layer utilities {
@@ -19,6 +28,29 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    :root {
+      --e-global-color-e7ed4db: #060f56; /* Replace with your desired color */
+    }
+    /* CSS for the 3D effect container */
+/* CSS for the 3D effect container with top and left shadow */
+.three-d-container {
+  position: relative;
+  background: white;
+  border-style: solid;
+  border-width: 0px 4px 4px 0px;
+  border-color: var(--e-global-color-e7ed4db); /* Use your desired color */
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: -4px -4px 6px rgba(0, 0, 0, 0.1), 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-gradient-blue {
+  background: linear-gradient(to right, #050C9C, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+ 
   }
   
 

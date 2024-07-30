@@ -1,15 +1,16 @@
 import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App.jsx";
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
-import "@fontsource/kumbh-sans"
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CoursePage from "./pages/CoursePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
 import EptControlPge from "./pages/EptControlPge.jsx";
+import ErrorPage from "./Components/ErrorPage.jsx";
+import "./index.css";
+import "@fontsource/kumbh-sans"
 
 const appRouter = createBrowserRouter([
   {
@@ -37,6 +38,7 @@ const appRouter = createBrowserRouter([
       }
       
     ],
+    errorElement:<ErrorPage/>
   },
 ]);
 

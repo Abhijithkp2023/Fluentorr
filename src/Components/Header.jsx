@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { MdMenu } from "react-icons/md";
-import { MdOutlineClose } from "react-icons/md";
+import { useState } from "react";
+import { MdMenu, MdOutlineClose, MdHome, MdInfo, MdSchool, MdArticle, MdAssessment } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -11,69 +10,70 @@ const Header = () => {
   };
 
   const onCloseMenu = () => {
-    setMenuOpen(false)
-  }
-
+    setMenuOpen(false);
+  };
 
   return (
-    <header role="banner" className="w-full z-20 ">
-    <nav role="navigation" className="bg-blue-50 flex justify-between items-center px-5">
-      <div>
-        <img className="w-36 md:w-44 lg:w-56 h-auto" src="/flu.png" alt="Fluentorr logo" />
-      </div>
-      <div
-        className={`md:static absolute z-50 md:min-h-fit min-h-[20vh] right-0 ${
-          menuOpen ? "top-[8%]" : "top-[-100%]"
-        } md:w-auto w-full flex justify-center mt-6 md:pb-0 pb-5`}
-      >
-        <ul className="flex md:flex-row flex-col md:items-center items-center md:gap-[4vw] gap-6 justify-center bg-blue-50 w-full">
-          <li className="text-base md:text-lg text-fontColor font-bold hover:text-gradient-blue">
-            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/" aria-label="Home">
-              Home
-            </Link>
-          </li>
-          <li className="text-base md:text-lg text-fontColor font-bold hover:text-gradient-blue">
-            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/about" aria-label="About">
-              About
-            </Link>
-          </li>
-          <li className="text-base md:text-lg text-fontColor font-bold hover:text-gradient-blue">
-            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/courses" aria-label="Contact us">
-              Courses
-            </Link>
-          </li>
-          <li className="text-base md:text-lg text-fontColor font-bold hover:text-gradient-blue">
-            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/blogs" aria-label="Contact us">
-              Blogs
-            </Link>
-          </li>
-          <li className="text-base md:text-lg text-fontColor font-bold hover:text-gradient-blue">
-            <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/epttest" aria-label="Ept test page">
-              EPT Test
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="flex items-center gap-2">
-        <button aria-label="Get started" className="bg-blue-500  hover:bg-blue-700 text-white font-bold px-2 py-1 md:py-2 md:px-4 rounded">
-          Enquire Now
-        </button>
-        {menuOpen === false ? (
-          <MdMenu
-            name="menu"
-            onClick={onToggleMenu}
-            className="text-3xl md:hidden cursor-pointer"
-            aria-label="open menu"
-          />
-        ) : (
-          <MdOutlineClose
-            onClick={onToggleMenu}
-            className="text-3xl md:hidden cursor-pointer"
-            aria-label="close menu"
-          />
-        )}
-      </div>
-    </nav>
+    <header role="banner" className="w-full z-20">
+      <nav role="navigation" className="bg-blue-50 pt-8 md:py-10 flex justify-between items-center pr-[5%] pl-[5%]">
+        <div className="flex items-center">
+          <img className="w-36 md:w-44 lg:w-52 h-auto" src="/flu.png" alt="fluentorr logo" />
+        </div>
+        <div
+          className={`md:static absolute z-40 md:min-h-fit min-h-[20vh] right-0 ${
+            menuOpen ? "top-[8%]" : "top-[-100%]"
+          } md:w-auto w-full flex md:justify-end justify-center md:pb-0 pb-5`}
+        >
+          <ul className="flex md:flex-row flex-col md:items-center items-center md:gap-[4vw] gap-6 justify-center bg-blue-50 w-full mt-4 pb-4 md:w-auto">
+            <li className="flex items-center text-sm md:text-base text-fontColor font-semibold hover:text-gradient-blue">
+              <MdHome className="mr-2" />
+              <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/" aria-label="home">
+                Home
+              </Link>
+            </li>
+            <li className="flex items-center text-sm md:text-base text-fontColor font-semibold hover:text-gradient-blue">
+              <MdInfo className="mr-2" />
+              <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/about" aria-label="about">
+                About
+              </Link>
+            </li>
+            <li className="flex items-center text-sm md:text-base text-fontColor font-semibold hover:text-gradient-blue">
+              <MdSchool className="mr-2" />
+              <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/courses" aria-label="courses">
+                Courses
+              </Link>
+            </li>
+            <li className="flex items-center text-sm md:text-base text-fontColor font-semibold hover:text-gradient-blue">
+              <MdArticle className="mr-2" />
+              <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/blogs" aria-label="blogs">
+                Blogs
+              </Link>
+            </li>
+            <li className="flex hover:scale-105 items-center text-sm bg-blue-800 sm:text-base text-white p-1 rounded-md font-semibold">
+              <MdAssessment className="mr-2" />
+              <Link className="" onClick={onCloseMenu} to="/epttest" aria-label="ept est">
+                EPT Test
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="flex items-center gap-2 md:hidden">
+          {menuOpen === false ? (
+            <MdMenu
+              name="menu"
+              onClick={onToggleMenu}
+              className="text-3xl cursor-pointer"
+              aria-label="open menu"
+            />
+          ) : (
+            <MdOutlineClose
+              onClick={onToggleMenu}
+              className="text-3xl cursor-pointer z-50"
+              aria-label="close menu"
+            />
+          )}
+        </div>
+      </nav>
     </header>
   );
 };
