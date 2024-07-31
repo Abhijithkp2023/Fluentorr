@@ -40,7 +40,7 @@ const Header = () => {
             <li className="flex items-center text-sm md:text-base text-fontColor font-semibold hover:text-gradient-blue">
               <MdSchool className="mr-2" />
               <Link className="hover:text-gray-700 hover:underline" onClick={onCloseMenu} to="/courses" aria-label="courses">
-                Courses
+                Trainings
               </Link>
             </li>
             <li className="flex items-center text-sm md:text-base text-fontColor font-semibold hover:text-gradient-blue">
