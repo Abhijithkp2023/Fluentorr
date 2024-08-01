@@ -1,60 +1,72 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { ReactMic } from 'react-mic';
 import axios from 'axios';
 
-const FluencyTest = ({ onNext }) => {
+const FluencyTest = ({ setFluencyFeedback, setFeedback, responses,moveToNextSection }) => {
   const [recording, setRecording] = useState(false);
+  const [currentRecordingType, setCurrentRecordingType] = useState('');
   const [audioURL, setAudioURL] = useState('');
   const [descriptionAudioURL, setDescriptionAudioURL] = useState('');
-  const mediaRecorderRef = useRef(null);
-  const chunks = useRef([]);
+  const [loading, setLoading] = useState(false);
 
-  const startRecording = () => {
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then((stream) => {
-        mediaRecorderRef.current = new MediaRecorder(stream);
-        mediaRecorderRef.current.ondataavailable = (event) => {
-          chunks.current.push(event.data);
-        };
-        mediaRecorderRef.current.onstop = () => {
-          const blob = new Blob(chunks.current, { type: 'audio/wav' });
-          chunks.current = [];
-          const audioURL = URL.createObjectURL(blob);
-          setAudioURL(audioURL);
-          sendAudio(blob, 'reading');
-        };
-        mediaRecorderRef.current.start();
-        setRecording(true);
-      })
-      .catch((err) => console.error('Error accessing microphone', err));
+  const startRecording = (type) => {
+    setCurrentRecordingType(type);
+    setRecording(true);
   };
 
   const stopRecording = () => {
-    mediaRecorderRef.current.stop();
     setRecording(false);
+  };
+
+  const onStop = async (recordedBlob) => {
+    const audioBlob = recordedBlob.blob;
+    const audioURL = URL.createObjectURL(audioBlob);
+    if (currentRecordingType === 'reading') {
+      setAudioURL(audioURL);
+    } else {
+      setDescriptionAudioURL(audioURL);
+    }
+    sendAudio(audioBlob, currentRecordingType);
   };
 
   const sendAudio = async (audioBlob, type) => {
     const formData = new FormData();
     formData.append('file', audioBlob, 'recording.wav');
     formData.append('type', type);
-    try {
-      const response = await axios.post('http://localhost:3001/analyze', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
-      console.log('Analysis result:', response.data);
-    } catch (error) {
-      console.error('Error sending audio to backend', error);
-    }
-  };
 
-  const handleNext = () => {
-    onNext({
-      section: 'Fluency and Pronunciation',
-      questions: [
-        { question: 'Read the following passage aloud: "The quick brown fox jumps over the lazy dog."', response: audioURL },
-        { question: 'Describe the following picture:', response: descriptionAudioURL }
-      ]
-    });
+    try {
+        const response = await fetch('http://localhost:3001/api/analyze', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const result = await response.json();
+        console.log('Analysis result:', result);
+        
+        // Assuming the result contains type field
+        setFluencyFeedback((prevFeedback) => ({
+            ...prevFeedback,
+                pronunciation: result.pronunciation,
+                fluency: result.fluency
+        }));
+    } catch (error) {
+        console.error('Error sending audio to backend', error);
+    }
+};
+
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      // Send responses data to /submit and wait for response
+      const submitResponse = await axios.post('http://localhost:3001/api/submit', responses);
+     setFeedback(submitResponse.data);
+      moveToNextSection()
+    } catch (error) {
+      console.error('Error submitting responses:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -64,27 +76,40 @@ const FluencyTest = ({ onNext }) => {
         <p>Read the following passage aloud:</p>
         <p>"The quick brown fox jumps over the lazy dog."</p>
         <button 
-          onClick={recording ? stopRecording : startRecording} 
-          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${recording ? 'bg-red-500' : 'bg-blue-500'}`}
+          onClick={recording ? stopRecording : () => startRecording('reading')} 
+          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${recording && currentRecordingType === 'reading' ? 'bg-red-500' : 'bg-blue-500'}`}
         >
-          {recording ? 'Stop Recording' : 'Start Recording'}
+          {recording && currentRecordingType === 'reading' ? 'Stop Recording' : 'Start Recording'}
         </button>
+        <ReactMic
+          record={recording && currentRecordingType === 'reading'}
+          className="sound-wave"
+          onStop={onStop}
+          mimeType="audio/wav"
+        />
         {audioURL && <audio controls src={audioURL}></audio>}
       </div>
       <div className="mb-4">
         <p>Describe the following picture:</p>
         <img src="onlineclass.jpg" className='p-5 w-96 h-72' alt="description" />
         <button 
-          onClick={recording ? stopRecording : startRecording} 
-          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${recording ? 'bg-red-500' : 'bg-blue-500'}`}
+          onClick={recording ? stopRecording : () => startRecording('description')} 
+          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${recording && currentRecordingType === 'description' ? 'bg-red-500' : 'bg-blue-500'}`}
         >
-          {recording ? 'Stop Recording' : 'Start Recording'}
+          {recording && currentRecordingType === 'description' ? 'Stop Recording' : 'Start Recording'}
         </button>
+        <ReactMic
+          record={recording && currentRecordingType === 'description'}
+          className="sound-wave"
+          onStop={onStop}
+          mimeType="audio/wav"
+        />
         {descriptionAudioURL && <audio controls src={descriptionAudioURL}></audio>}
       </div>
-      <button onClick={handleNext} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-        Next
+      <button onClick={handleSubmit} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        Submit
       </button>
+      {loading && <p>Loading...</p>}
     </div>
   );
 };

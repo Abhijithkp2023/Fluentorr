@@ -55,6 +55,54 @@
   border: 1px solid #ddd;
   margin: 10px 0;
 }
+/* src/Components/FeedbackSection.css */
+.feedback-section {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  color: white;
+}
+
+.feedback-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.feedback-header span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.circle {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(#00bfff var(--percentage), #e0e0e0 var(--percentage));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.circle span {
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+p {
+  margin: 5px 0 0 10px;
+  font-size: 14px;
+  color: #d0d0d0;
+}
+
 
 
  
