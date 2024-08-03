@@ -12,7 +12,7 @@ const EptTest = () => {
           Assess your current English with AI powered English Proficiency test. Get instant results on your <span className='font-semibold text-black'>pronunciation, grammar, fluency</span> and <span className='font-semibold text-black'>vocabulary.</span>
         </p>
         <button className='bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-md '><a
-          href="/test"
+          href="/epttest"
           className=" text-white font-semibold transition duration-300"
         >
           Go To Test
