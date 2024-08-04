@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FcNext } from "react-icons/fc";
 
 const VocabTest = ({ onNext }) => {
   const [answers, setAnswers] = useState({});
@@ -65,15 +66,15 @@ const VocabTest = ({ onNext }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-3xl font-bold text-indigo-600 mb-6">Vocabulary</h2>
+    <div className="bg-white md:p-6 p-1 rounded-lg shadow-md max-w-3xl mx-auto">
+      <h2 className="text-3xl font-bold text-gradient-blue mb-6">Vocabulary</h2>
       {questions.map((q, i) => (
-        <div key={i} className="mb-6">
-          <p className='text-lg text-gray-700 mb-2'>{q.question}</p>
+        <div key={i} className="mb-6 p-4 border border-gray-300 rounded-lg bg-gray-50">
+          <p className='text-lg text-fontColor mb-2'>{q.question}</p>
           <select 
             name={q.name} 
             onChange={handleChange} 
-            className="w-full sm:w-1/2 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full sm:w-1/2 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={answers[q.name] || ''}
           >
             <option value="" disabled>Select an option</option>

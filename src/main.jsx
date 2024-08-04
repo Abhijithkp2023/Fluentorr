@@ -7,12 +7,13 @@ import "@fontsource/kumbh-sans";
 import Shimmer from "./Components/Shimmer.jsx";
 
 import HomePage from './pages/HomePage'; // Eager loading the homepage
+import EptControlPge from './pages/EptControlPge.jsx';
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const CoursePage = lazy(() => import('./pages/CoursePage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
-const EptControlPge = lazy(() => import('./pages/EptControlPge'));
 const ErrorPage = lazy(() => import('./Components/ErrorPage.jsx'));
+const Career = lazy(() => import('./Components/Career.jsx'));
 
 const appRouter = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/epttest",
         element: <Suspense fallback={<Shimmer />}><EptControlPge /></Suspense>,
+      },
+      {
+        path: "/career",
+        element: <Suspense fallback={<Shimmer />}><Career /></Suspense>,
       },
     ],
     errorElement: <Suspense fallback={<Shimmer />}><ErrorPage /></Suspense>,

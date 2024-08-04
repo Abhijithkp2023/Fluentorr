@@ -21,12 +21,12 @@ const AboutPage = () => {
             <h1 className="mb-6 text-3xl md:text-4xl tracking-tight font-extrabold text-gradient-blue text-center">
               Who We Are...?
             </h1>
-            <p className="mb-6 md:text-base text-sm">
+            <p className="mb-6 md:text-base text-fontColor text-sm">
               Fluentorr is a team of dedicated educators revolutionizing English
               learning through personalized, interactive sessions, expert
               tutors, and practical communication focus. 
             </p>
-            <p className="md:text-base text-sm">
+            <p className="md:text-base text-fontColor text-sm">
               Our dynamic group sessions, expert tutors, and practical
               communication focus ensure you gain the skills needed for
               real-life success. 
@@ -39,7 +39,7 @@ const AboutPage = () => {
               alt="office content 1"
             />
             <img
-              className="mt-4 w-full lg:mt-0 rounded-lg"
+              className="mt-4 w-full lg:mt-0 rounded-lg "
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
               alt="office content 2"
             />
@@ -52,7 +52,7 @@ const AboutPage = () => {
           <div className="mt-12 flex flex-col gap-12">
             <div>
               <div className="flex items-center mb-4">
-                <div className="flex items-center justify-center h-14 w-14 rounded-md bg-blue-900 text-white">
+                <div className="flex items-center justify-center h-14 w-14 rounded-md bg-white border-2 border-blue-500 text-blue-500">
                   <BiBullseye className="text-2xl"/>
                 </div>
                 <h3 className="text-lg font-bold ml-5 text-gradient-blue">
@@ -90,7 +90,7 @@ const AboutPage = () => {
             </div>
             <div>
               <div className="flex items-center mb-4">
-                <div className="flex items-center justify-center h-14 w-14 rounded-md bg-blue-900 text-white">
+                <div className="flex items-center justify-center h-14 w-14 rounded-md bg-white border-2 border-blue-500 text-blue-500">
                 <AiOutlineAim className="text-2xl" />
                 </div>
                 <h3 className="text-lg font-bold ml-5 text-gradient-blue">

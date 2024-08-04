@@ -20,7 +20,7 @@ const Header = () => {
           <img className="w-36 md:w-44 lg:w-52 h-auto" src="/flu.png" alt="fluentorr logo" />
         </div>
         <div
-          className={`md:static absolute z-40 md:min-h-fit min-h-[20vh] right-0 ${
+          className={`md:static md:mt-0 -mt-1 fixed z-40 md:min-h-fit min-h-[20vh] right-0 ${
             menuOpen ? "top-[8%]" : "top-[-100%]"
           } md:w-auto w-full flex md:justify-end justify-center md:pb-0 pb-5`}
         >

@@ -35,6 +35,7 @@ const GrammarTest = ({ onNext }) => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const initialQuestions = getRandomQuestions(questionPool, 2); // Get 2 questions from each level
     setQuestions(initialQuestions);
   }, []);
@@ -63,32 +64,32 @@ const GrammarTest = ({ onNext }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-3xl font-bold text-indigo-600 mb-6">Grammar</h2>
-      {questions.map((q, i) => (
-        <div key={i} className="mb-6">
-          <p className='text-lg text-gray-700 mb-2'>{q.question}</p>
-          <select 
-            name={q.name} 
-            onChange={handleChange} 
-            className="w-full sm:w-1/2 border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            value={answers[q.name] || ''}
-          >
-            <option value="" disabled>Select an option</option>
-            {q.options.map((option, index) => (
-              <option key={index} value={option}>{option}</option>
-            ))}
-          </select>
-        </div>
-      ))}
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      <button 
+    <div className="bg-white  md:p-6 p-1 rounded-lg shadow-md max-w-3xl mx-auto">
+    <h2 className="text-3xl font-bold text-indigo-600 mb-6">Grammar</h2>
+    {questions.map((q, i) => (
+      <div key={i} className="mb-6 p-4 border border-gray-200 rounded-lg bg-gray-50">
+        <p className='text-lg text-fontColor mb-2'>{q.question}</p>
+        <select 
+          name={q.name} 
+          onChange={handleChange} 
+          className="w-full sm:w-1/2 border border-gray-300 rounded-lg py-2 px-4 text-fontColor focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          value={answers[q.name] || ''}
+        >
+          <option value="" disabled>Select an option</option>
+          {q.options.map((option, index) => (
+            <option key={index} value={option}>{option}</option>
+          ))}
+        </select>
+      </div>
+    ))}
+    {error && <p className="text-red-500 mb-4">{error}</p>}
+    <button 
         onClick={handleSubmit} 
         className="w-1/2 sm:w-1/5 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
       >
         Next
       </button>
-    </div>
+  </div>
   );
 };
 

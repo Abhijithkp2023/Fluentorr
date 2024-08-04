@@ -19,6 +19,7 @@ const EptTestPage = ({ completeTest }) => {
   };
 
   console.log(responses)
+  
   const moveToNextSection = () => {
     setSection(section + 1);
   };
@@ -47,10 +48,10 @@ const EptTestPage = ({ completeTest }) => {
   }, [section]);
 
   return (
-    <div className="container mx-auto p-4">
-      {section === 3 && <VocabTest onNext={handleNext} />}
+    <div className="container bg-white mx-auto p-4">
+      {section === 1 && <VocabTest onNext={handleNext} />}
       {section === 2 && <GrammarTest onNext={handleNext} />}
-      {section === 1 && (
+      {section === 3 && (
         <FluencyTest
           onNext={handleNext}
           setFluencyFeedback={setFluencyFeedback}
