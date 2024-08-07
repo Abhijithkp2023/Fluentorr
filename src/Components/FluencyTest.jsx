@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ReactMic } from "react-mic";
-import axios from "axios";
+
 
 const paragraphs = [
   "Project Moo is based on the true story of how one girl from Indonesia used her love of animals to help hundreds of farmers - and cows - in her community. This story demonstrates how with supportive adult allies and a dream, any young person can positively impact their community.",
@@ -21,8 +21,7 @@ const getRandomElement = (array) =>
 
 const FluencyTest = ({
   setFluencyFeedback,
-  setFeedback,
-  responses,
+  //responses,
   moveToNextSection,
 }) => {
   const [recording, setRecording] = useState(false);
@@ -84,7 +83,7 @@ const FluencyTest = ({
         method: "POST",
         body: formData,
       });
-
+      console.log(response);
       const result = await response.json();
       console.log("Analysis result:", result);
 
@@ -99,19 +98,29 @@ const FluencyTest = ({
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
-    try {
-      const submitResponse = await axios.post(
-        "http://localhost:3001/api/submit",
-        responses
-      );
-      setFeedback(submitResponse.data);
-      moveToNextSection();
-    } catch (error) {
-      console.error("Error submitting responses:", error);
-    } finally {
-      setLoading(false);
-    }
+    setLoading(false)
+    moveToNextSection();
+    // setLoading(true);
+    // try {
+    //   const submitResponse = await fetch("http://localhost:3001/api/submit", {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ responses }),
+    //   });
+
+    //   if (!submitResponse.ok) {
+    //     throw new Error(`HTTP error! Status: ${submitResponse.status}`);
+    //   }
+  
+    //   const result = await submitResponse.json();
+    //   
+    // } catch (error) {
+    //   console.error("Error submitting responses:", error);
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   useEffect(() => {
