@@ -8,17 +8,71 @@ const VocabTest = ({ onNext }) => {
 
   const questionPool = {
     basic: [
-      { question: "Which word is the synonym of 'happy'?", options: ['Sad', 'Joyful', 'Angry', 'Bored'], name: 'multipleChoice1' },
-      { question: "What is the antonym of 'difficult'?", options: ['Hard', 'Simple', 'Complex', 'Challenging'], name: 'multipleChoice2' },
+      { 
+        question: "Which word is the synonym of 'happy'?", 
+        options: ['Sad', 'Joyful', 'Angry', 'Bored'], 
+        name: 'multipleChoice1',
+        correctAnswer: 'Joyful',
+        slightlyCorrectAnswer: null
+      },
+      { 
+        question: "What is the antonym of 'difficult'?", 
+        options: ['Hard', 'Simple', 'Complex', 'Challenging'], 
+        name: 'multipleChoice2',
+        correctAnswer: 'Simple',
+        slightlyCorrectAnswer: null
+      },
     ],
     intermediate: [
-      { question: "Choose the correct word to complete the sentence: She was feeling very ______ after the long day.", options: ['exhausted', 'energetic', 'bored', 'excited'], name: 'multipleChoice3' },
-      { question: "Which word fits the definition: 'an intense feeling of fear or apprehension'?", options: ['Joy', 'Anger', 'Terror', 'Confusion'], name: 'multipleChoice4' },
+      { 
+        question: "Choose the correct word to complete the sentence: She was feeling very ______ after the long day.", 
+        options: ['exhausted', 'complex', 'heavy', 'manage'], 
+        name: 'multipleChoice3',
+        correctAnswer: 'exhausted',
+        slightlyCorrectAnswer: null
+      },
+      { 
+        question: "Which word fits the definition: 'an intense feeling of fear or apprehension'?", 
+        options: ['Joy', 'Anger', 'happy', 'cry'], 
+        name: 'multipleChoice4',
+        correctAnswer: 'anger',
+        slightlyCorrectAnswer: "Anger"
+      },
     ],
     advanced: [
-      { question: "Identify the correct form of the word 'run' to fit in the sentence: He has been ______ every morning.", options: ['running', 'ran', 'runs', 'run'], name: 'multipleChoice5' },
-      { question: "Which sentence uses the word 'bark' correctly?", options: ['The tree had a rough bark.', 'The dog started to bark loudly.', 'Both A and B are correct.', 'None of the above'], name: 'multipleChoice6' },
+      { 
+        question: "Identify the correct form of the word 'run' to fit in the sentence: He has been ______ every morning.", 
+        options: ['running', 'ran', 'runs', 'run'], 
+        name: 'multipleChoice5',
+        correctAnswer: 'running',
+        slightlyCorrectAnswer: null
+      },
+      { 
+        question: "Which sentence uses the word 'bark' correctly?", 
+        options: ['The tree had a rough bark.', 'The dog started to bark loudly.', 'Both A and B are correct.', 'None of the above'], 
+        name: 'multipleChoice6',
+        correctAnswer: 'Both A and B are correct.',
+        slightlyCorrectAnswer: null
+      },
     ],
+  };
+
+  const comments = {
+    low: [
+      "Keep practicing! You'll get there.",
+      "Don't give up, keep learning and improving!",
+      "Consider reviewing basic vocabulary concepts."
+    ],
+    medium: [
+      "Good job, but there's room for improvement.",
+      "You're on the right track!",
+      "Keep up the good work and aim higher!"
+    ],
+    high: [
+      "Excellent work!",
+      "You have a strong vocabulary!",
+      "Great job, keep it up!"
+    ]
   };
 
   const getRandomQuestions = (pool, numQuestions) => {
@@ -54,14 +108,43 @@ const VocabTest = ({ onNext }) => {
       return;
     }
 
-    // Call the onNext function with the collected answers
+    let totalScore = 0;
+    const questionResults = questions.map((q) => {
+      const userAnswer = answers[q.name];
+      let score = 0;
+
+      if (userAnswer === q.correctAnswer) {
+        score = 16;
+      } else if (userAnswer === q.slightlyCorrectAnswer) {
+        score = 13;
+      }
+
+      totalScore += score;
+
+      return {
+        question: q.question,
+        answer: userAnswer,
+        options: q.options,
+        correctAnswer: q.correctAnswer,
+        slightlyCorrectAnswer: q.slightlyCorrectAnswer,
+        score: score
+      };
+    });
+
+    let comment = '';
+    if (totalScore < 40) {
+      comment = comments.low[Math.floor(Math.random() * comments.low.length)];
+    } else if (totalScore < 80) {
+      comment = comments.medium[Math.floor(Math.random() * comments.medium.length)];
+    } else {
+      comment = comments.high[Math.floor(Math.random() * comments.high.length)];
+    }
+
     onNext({
       section: 'Vocabulary',
-      questions: questions.map((q) => ({
-        question: q.question,
-        answer: answers[q.name],
-        options: q.options
-      }))
+      questions: questionResults,
+      score: totalScore,
+      comment: comment
     });
   };
 
